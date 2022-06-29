@@ -1,17 +1,16 @@
-from telegram import Bot
+from telegram.ext import Updater
 from django.conf import settings
 
-bot = Bot(settings.TELEGRAM_TOKEN)
+from .routes import Routes
+from .apps import logger
+
 TELEGRAM_ADMIN_ID = settings.TELEGRAM_ADMIN_ID
-
-
-def send_message(message):
-    bot.send_message(TELEGRAM_ADMIN_ID, text=message)
+updater = Updater(settings.TELEGRAM_TOKEN)
 
 
 def start():
-    print('bot is started')
-
-
-if __name__ == '__main__':
-    send_message('test')
+    logger.info('Bot is started')
+    routes = Routes(updater)
+    routes.initial()
+    updater.start_polling()
+    updater.idle()
