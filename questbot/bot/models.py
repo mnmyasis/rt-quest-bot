@@ -29,7 +29,8 @@ class Menu(models.Model):
     )
     slug = models.OneToOneField(
         'Slug',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='menu'
     )
 
     def __str__(self):
@@ -51,7 +52,7 @@ class Button(models.Model):
         max_length=50,
         verbose_name='Наименование кнопки'
     )
-    slug = models.OneToOneField(
+    slug = models.ForeignKey(
         Slug,
         on_delete=models.CASCADE,
         help_text='slug для перехода к следующему меню.'
