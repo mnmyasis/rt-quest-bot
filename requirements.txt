@@ -2,4 +2,4 @@ django==4.0.5
 python-dotenv==0.20.0
 python-telegram-bot==13.13
 flake8==3.9.2
-
+Pillow==9.2.0
