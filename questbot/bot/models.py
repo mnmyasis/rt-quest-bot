@@ -76,6 +76,7 @@ class Button(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
+        related_name='buttons',
         verbose_name='Отоброжаемый контент при нажатии.'
     )
 
